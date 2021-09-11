@@ -1,26 +1,14 @@
 # -*- coding: UTF-8 -*-
 import requests
+import re
+import time
+import xml.etree.ElementTree as et
 from bs4 import BeautifulSoup
 from selenium import webdriver
-import re
 from lxml import etree
-import time
-import xml.etree.ElementTree as ET
 
 url = "https://www.amazon.cn/%E5%AD%99%E5%AD%90%E5%85%B5%E6%B3%95-%E5%AD%99%E6%AD%A6/product-reviews/B0011CT3HW/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews"
 url_detail = "https://www.amazon.cn/%E5%AD%99%E5%AD%90%E5%85%B5%E6%B3%95-%E5%AD%99%E6%AD%A6/dp/B0011CT3HW/ref=cm_cr_arp_d_bdcrb_top?ie=UTF8"
-
-# def getHTMLText(url):
-#     try:
-#         r=requests.request("get",url,timeout=10)
-#         r.raise_for_status()
-#         r.encoding=r.apparent_encoding
-#         return r.text
-#     except:
-#         return "exception"
-
-# html=getHTMLText(url)
-# soup=BeautifulSoup(html,"lxml")# 对获取的网页内容按照特定的解析器解析
 
 data = requests.get(url_detail).text
 s = etree.HTML(data)
@@ -35,7 +23,7 @@ author = s.xpath('//*[@id="bylineInfo"]/span/a/text()')[0]
 browser = webdriver.Chrome()
 browser.get(url)
 
-review = ET.Element("review")
+review = et.Element("review")
 review.tail = '\n'
 
 page = 0
@@ -63,17 +51,17 @@ while page < 1000:
 
         print(summary, score, date, text)
 
-        item = ET.SubElement(review, "item")
+        item = et.SubElement(review, "item")
         item.tail = '\n'
 
-        press_et = ET.SubElement(item, "press")
-        name_et = ET.SubElement(item, "name")
-        year_et = ET.SubElement(item, "year")
-        author_et = ET.SubElement(item, "author")
-        summary_et = ET.SubElement(item, "summary")
-        score_et = ET.SubElement(item, "score")
-        date_et = ET.SubElement(item, "date")
-        text_et = ET.SubElement(item, "text")
+        press_et = et.SubElement(item, "press")
+        name_et = et.SubElement(item, "name")
+        year_et = et.SubElement(item, "year")
+        author_et = et.SubElement(item, "author")
+        summary_et = et.SubElement(item, "summary")
+        score_et = et.SubElement(item, "score")
+        date_et = et.SubElement(item, "date")
+        text_et = et.SubElement(item, "text")
 
         press_et.text = press
         name_et.text = name
@@ -93,5 +81,5 @@ while page < 1000:
         date_et.tail = '\n'
         text_et.tail = '\n'
 
-        tree = ET.ElementTree(review)
+        tree = et.ElementTree(review)
         tree.write("AmazonReview.xml", encoding="utf-8", xml_declaration=True)

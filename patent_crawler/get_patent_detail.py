@@ -1,10 +1,7 @@
-from selenium import webdriver
-from selenium.webdriver.support.ui import Select
 import time
-import csv
 import re
 import pandas as pd
-import math
+from selenium import webdriver
 
 chrome_options = webdriver.ChromeOptions()
 prefs = {"profile.managed_default_content_settings.images": 2, "profile.managed_default_content_settings.videos": 2}
@@ -89,8 +86,8 @@ for i in all_patent_link:
             for i in range(1, int(count_patent_citations) + 2):
                 if is_exist_element('//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
                         i) + ']') == True and browser.find_element_by_xpath(
-                        '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
-                                i) + ']').text != "Family To Family Citations":
+                    '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
+                        i) + ']').text != "Family To Family Citations":
                     patent_citations_detail = browser.find_element_by_xpath(
                         '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(i) + ']').text
                     patent_citations.append(patent_citations_detail)
@@ -110,8 +107,8 @@ for i in all_patent_link:
             for i in range(1, int(count_non_patent_citations) + 2):
                 if is_exist_element('//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
                         i) + ']') == True and browser.find_element_by_xpath(
-                        '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
-                                i) + ']').text != "Family To Family Citations":
+                    '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
+                        i) + ']').text != "Family To Family Citations":
                     non_patent_citations_detail = browser.find_element_by_xpath(
                         '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(i) + ']').text
                     non_patent_citations.append(non_patent_citations_detail)
@@ -131,8 +128,8 @@ for i in all_patent_link:
             for i in range(1, int(count_non_patent_citations) + 2):
                 if is_exist_element('//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
                         i) + ']') == True and browser.find_element_by_xpath(
-                        '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
-                                i) + ']').text != "Family To Family Citations":
+                    '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
+                        i) + ']').text != "Family To Family Citations":
                     non_patent_citations_detail = browser.find_element_by_xpath(
                         '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(i) + ']').text
                     non_patent_citations.append(non_patent_citations_detail)
@@ -153,8 +150,8 @@ for i in all_patent_link:
             for i in range(1, int(count_cited_by) + 2):
                 if is_exist_element('//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
                         i) + ']') == True and browser.find_element_by_xpath(
-                        '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
-                                i) + ']').text != "Family To Family Citations":
+                    '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
+                        i) + ']').text != "Family To Family Citations":
                     cited_by_detail = browser.find_element_by_xpath(
                         '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(i) + ']').text
                     cited_by.append(cited_by_detail)
@@ -175,8 +172,8 @@ for i in all_patent_link:
             for i in range(1, int(count_cited_by) + 2):
                 if is_exist_element('//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
                         i) + ']') == True and browser.find_element_by_xpath(
-                        '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
-                                i) + ']').text != "Family To Family Citations":
+                    '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
+                        i) + ']').text != "Family To Family Citations":
                     cited_by_detail = browser.find_element_by_xpath(
                         '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(i) + ']').text
                     cited_by.append(cited_by_detail)
@@ -194,8 +191,8 @@ for i in all_patent_link:
         for i in range(1, similar_documents_len + 1):
             if is_exist_element('//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
                     i) + ']') == True and browser.find_element_by_xpath(
-                    '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
-                            i) + ']').text != "Family To Family Citations":
+                '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
+                    i) + ']').text != "Family To Family Citations":
                 similar_documents_detail = browser.find_element_by_xpath(
                     '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(i) + ']').text
                 similar_documents.append(similar_documents_detail)
@@ -204,7 +201,7 @@ for i in all_patent_link:
 
     if is_exist_element('//*[@id="similarDocuments"]') == True and div_num_count != 0 and is_exist_element(
             '//*[@id="patentCitations"]') == True or is_exist_element(
-            '//*[@id="nplCitations"]') == True or is_exist_element('//*[@id="citedBy"]') == True:
+        '//*[@id="nplCitations"]') == True or is_exist_element('//*[@id="citedBy"]') == True:
         div_num_count = div_num_count + 2
         similar_documents = []
         similar_documents_len = len(
@@ -213,8 +210,8 @@ for i in all_patent_link:
         for i in range(1, similar_documents_len + 1):
             if is_exist_element('//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
                     i) + ']') == True and browser.find_element_by_xpath(
-                    '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
-                            i) + ']').text != "Family To Family Citations":
+                '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(
+                    i) + ']').text != "Family To Family Citations":
                 similar_documents_detail = browser.find_element_by_xpath(
                     '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count) + ']/div/div[2]/div[' + str(i) + ']').text
                 similar_documents.append(similar_documents_detail)
@@ -239,8 +236,8 @@ for i in all_patent_link:
             for i in range(1, int(count_applicationChildApps) + 2):
                 if is_exist_element('//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
                         i) + ']') == True and browser.find_element_by_xpath(
-                        '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
-                                i) + ']').text != "Family To Family Citations":
+                    '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
+                        i) + ']').text != "Family To Family Citations":
                     applicationChildApps_detail = browser.find_element_by_xpath(
                         '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
                             i) + ']').text
@@ -263,8 +260,8 @@ for i in all_patent_link:
             for i in range(1, int(count_applicationPriorityApps) + 2):
                 if is_exist_element('//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
                         i) + ']') == True and browser.find_element_by_xpath(
-                        '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
-                                i) + ']').text != "Family To Family Citations":
+                    '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
+                        i) + ']').text != "Family To Family Citations":
                     applicationPriorityApps_detail = browser.find_element_by_xpath(
                         '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
                             i) + ']').text
@@ -286,8 +283,8 @@ for i in all_patent_link:
             for i in range(1, int(count_appsClaimingPriority) + 2):
                 if is_exist_element('//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
                         i) + ']') == True and browser.find_element_by_xpath(
-                        '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
-                                i) + ']').text != "Family To Family Citations":
+                    '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
+                        i) + ']').text != "Family To Family Citations":
                     appsClaimingPriority_detail = browser.find_element_by_xpath(
                         '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
                             i) + ']').text
@@ -305,8 +302,8 @@ for i in all_patent_link:
         for i in range(1, legalEvents_len + 1):
             if is_exist_element('//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
                     i) + ']') == True and browser.find_element_by_xpath(
-                    '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
-                            i) + ']').text != "Family To Family Citations":
+                '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(
+                    i) + ']').text != "Family To Family Citations":
                 legalEvents_detail = browser.find_element_by_xpath(
                     '//*[@id="wrapper"]/div[3]/div[' + str(div_num_count1) + ']/div/div[2]/div[' + str(i) + ']').text
                 legalEvents.append(legalEvents_detail)

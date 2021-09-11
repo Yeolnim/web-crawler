@@ -1,10 +1,8 @@
-from selenium import webdriver
-from selenium.webdriver.support.ui import Select
-import time
-import csv
 import re
+import time
 import pandas as pd
 import math
+from selenium import webdriver
 
 
 # 说明

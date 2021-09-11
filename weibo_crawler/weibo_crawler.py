@@ -1,24 +1,13 @@
-import selenium
-from selenium import webdriver
-from scrapy.selector import Selector
-import time
-from selenium.webdriver.common.keys import Keys
-from bs4 import BeautifulSoup
 import re
+import time
 import datetime
-from googletrans import Translator
-from xml.dom.minidom import Document
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import StaleElementReferenceException
-from selenium.webdriver.common.by import By
-
-import math
 import codecs
 
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from xml.dom.minidom import Document
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import StaleElementReferenceException
 
 # 设置代理，登录
 def login_weibo(username, password):
@@ -49,7 +38,7 @@ class wait_for_more_than_n_elements_to_be_present(object):
 
     def __call__(self, driver):
         try:
-            elements = EC._find_elements(driver, self.locator)
+            elements = ec._find_elements(driver, self.locator)
             return len(elements) > self.count
         except StaleElementReferenceException:
             return False

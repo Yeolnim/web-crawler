@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
 from xml.dom.minidom import Document, parse
-import pandas as pd
 
 
 def search(keyword):
@@ -30,7 +29,7 @@ def get():
         b = grades.find_all('a', {'class': 'style-scope state-modifier'})
         classifications_cont1 = a[-1].text
         classifications_num1 = b[-1].text
-        # classifications=driver.find_element_by_xpath('//*[@id="classifications"]/classification-viewer/div/classification-tree/div/div/div/div[5]').text  #Classifications
+
 
         abstract1 = driver.find_element_by_xpath('//*[@id="text"]/abstract/div').text  # abstract
         PatentCitations1 = driver.find_element_by_xpath('//*[@id="wrapper"]/div[3]/div[1]/div').text  # Patent Citations
@@ -45,14 +44,6 @@ def get():
         CitedBy1 = '未找到'
         claims1 = '未找到'
         Description1 = '未找到'
-
-    # try:
-    #     pd.read_csv('Test.csv')
-    #     dataframe = pd.DataFrame({'abstract': abstract,'classifications_num':classifications_num,'classifications_cont':classifications_cont,'PatentCitations':PatentCitations,'CitedBy':CitedBy,'claims':claims,'Description':Description},index=[0])
-    #     dataframe.to_csv('Test.csv', mode='a', header=False,encoding='utf-8')
-    # except:
-    #     dataframe = pd.DataFrame({'abstract': abstract,'classifications_num':classifications_num,'classifications_cont':classifications_cont,'PatentCitations':PatentCitations,'CitedBy':CitedBy,'claims':claims,'Description':Description},index=[0])
-    #     dataframe.to_csv('Test.csv',encoding='utf-8')
 
     return abstract1, classifications_num1, classifications_cont1, PatentCitations1, CitedBy1, claims1, Description1
 

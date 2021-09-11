@@ -1,9 +1,5 @@
-import xml.etree.ElementTree as ET
 # -*- coding: utf-8 -*-
-import sys
-import re
 import requests
-import json
 import execjs
 import http.client
 import hashlib
@@ -11,8 +7,9 @@ import json
 import urllib
 import time
 import random
+import xml.etree.ElementTree as et
 
-tree = ET.parse('AmazonReview.xml')
+tree = et.parse('AmazonReview.xml')
 root = tree.getroot()
 
 
@@ -33,7 +30,7 @@ def baidu_translate(content, fromLang='zh', toLang='en'):
 
     try:
         httpClient = http.client.HTTPConnection('api.fanyi.baidu.com')
-        httpClient.request('GET', myurl)
+        httpClient.request('Get', myurl)
         # response是HTTPResponse对象
         response = httpClient.getresponse()
         jsonResponse = response.read().decode("utf-8")  # 获得返回的结果，结果为json格式
@@ -144,8 +141,8 @@ if __name__ == '__main__':
 
             print(num, '\n', summary_trans, '\n', text_trans)
 
-            summarytrans = ET.Element("summary_trans")
-            texttrans = ET.Element("text_trans")
+            summarytrans = et.Element("summary_trans")
+            texttrans = et.Element("text_trans")
 
             summarytrans.text = summary_trans
             texttrans.text = text_trans
